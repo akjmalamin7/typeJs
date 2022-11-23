@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap");
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .card {
+            max-width: 400px;
+            width: 100%;
+            padding: 10px 50px;
+            box-shadow: 0px 0px 12px rgb(0 0 0 / 10%);
+            border-radius: 5px;
+            background: #ffffff;
+
+        }
+
+        p {
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        p span{
+            color:#2ECC71;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <p id="text">
+                I'm 
+                <span> </span>
+            </p>
+        </div>
+    </div>
+
+    <!-- js -->
+    <script>
+        let getAnimatedElement = document.querySelector("#text span");
+        const typeText = ["Akjm Al-Amin", "a coder","a programmer","a developer","an engineer"];
+        let j = 0, init = 0, speed = 80;
+        let animatedText = "";
+        const typeJsMadByAkjm = () => {
+            if (init < typeText[j].length) {
+                animatedText += typeText[j][init];
+                getAnimatedElement.textContent = animatedText;
+                init++;
+                setTimeout(typeJsMadByAkjm, speed);
+            } else {
+                setTimeout(() => {
+                    animatedText = "";
+                    getAnimatedElement.textContent = "";
+                    init = 0;
+                    j++;
+                    if (j >= typeText.length) {
+                        j = 0;
+                    }
+                    setTimeout(typeJsMadByAkjm, speed);
+                }, 1000);
+            }
+        };
+        typeJsMadByAkjm();
+    </script>
+</body>
+
+</html>
